@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Homework</title>
+</head>
+
+<style>
+    body{
+        background-color: beige;
+    }
+
+    #dapinkbox{
+        position:absolute;
+        top:25%;
+        width: 100%;
+        height: 50%;
+        background-color: lightpink;
+    }
+
+    .dabluebox{
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        width: 50%;
+        height: 50%;
+        background-color: lightskyblue;
+    }
+
+    h1{
+        cursor:cell;
+        position: relative;
+        text-align: center;
+        top: 25%;
+    }
+
+</style>
+
+<body>
+    <div id="dapinkbox";
+    onclick="console.log('The div was clicked')"; >
+        <div class="dabluebox"; >
+            <h1 onclick="daAlert()" >Hi World! Click here</h1>
+        </div>
+    </div>
+</body>
+
+<script>
+    function daAlert() {
+        alert("Hello there")
+    }
+</script>
+
+
+
+</html>
