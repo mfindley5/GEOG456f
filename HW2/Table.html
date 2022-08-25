@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 3px solid #000a0a;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #fdfdfd;
+}
+</style>
+</head>
+<script src="fire.js"></script>
+<body>
+For this table I decided to pick the years 2010, 2015, and 2020. This was mostly because there were so many entries. Now you can see the change over the past 10 years in the number of fires. You are also able to see the name and acreage burned.
+
+<h2>Fires in California</h2>
+
+<table id="mytable">
+  <tr>
+    <th>Year</th>
+    <th>Name</th>
+    <th>Acreage</th>
+  </tr>
+</table>
+</body>
+
+
+<script>
+  var x = document.getElementById('mytable')
+
+  for (var i =0; i<fire.objects.length; i++){
+    var myNewRow = document.createElement('tr');
+    var myNewCell1= document.createElement('td');
+    var myNewCell2= document.createElement('td');
+    var myNewCell3= document.createElement('td');
+    myNewCell1.innerText= fire.objects[i].properties.YEAR_;
+    myNewCell2.innerText= fire.objects[i].properties.FIRE_NAME;
+    myNewCell3.innerText= fire.objects[i].properties.GIS_ACRES;
+
+    if(fire.objects[i].properties.YEAR_=='2010') {myNewCell1.style.backgroundColor = 'pink'}
+    if(fire.objects[i].properties.YEAR_=='2015') {myNewCell1.style.backgroundColor = 'yellow'}
+    if(fire.objects[i].properties.YEAR_=='2020') {myNewCell1.style.backgroundColor = 'purple'}
+
+
+    myNewRow.append(myNewCell1)
+    myNewRow.append(myNewCell2)
+    myNewRow.append(myNewCell3)
+    x.append(myNewRow)
+  }
+
+</script>
+</html> 
