@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pie Chart</title>
+</head>
+<style>
+    #myDiv{
+        background-color: rgb(255, 255, 255);
+        width: 800px;
+        height: 800px;
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.14.0/plotly.min.js" integrity="sha512-XDnqTWsAcVl16AYJoBHumISzIYThowGjR67jeL53NSp6tajsq2qf5UeAWvk1n6Hp3M2iMsV/ewhPScBiLCDs9Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="fire.js"></script>
+
+<body>
+    <div id="myDiv">
+
+    </div>
+<script>
+myObj= []
+function myCount(myObj, arr) {for (var i = 0; i < arr.length; i++){
+  if(myObj[arr[i].properties.CAUSE] == undefined){myObj[arr[i].properties.CAUSE] = 1} else {myObj[arr[i].properties.CAUSE]= myObj[arr[i].properties.CAUSE]+1}}}
+  myCount(myObj,fire.objects)
+var data = [{
+  values: Object.keys(myObj).map(e=>myObj[e]),
+  labels: ['Lightning', 'Equipment', 'Smoking', 'Campfire', 'Arson', 'Playing with Fire', 'Miscellaneous', 'Vehcile', 'Powerline', 'Unknown'],
+  type: 'pie'
+}];
+
+var layout={
+    title: {
+        text: 'Cause of Fires in California in 2010, 2015, 2020',
+  height: 800,
+  width: 800
+}};
+
+Plotly.newPlot('myDiv', data, layout);
+
+// var data = [{
+//   values: fire.objects.map(e=>Number(e.properties.CAUSE)),
+//   labels: 
+//   type: 'pie',
+// }];
+
+
+// var layout = {
+//   height: 800,
+//   width: 800
+// };
+
+// Plotly.newPlot('myDiv', data, layout);
+
+
+
+</script>
+</body>
+</html>

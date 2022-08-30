@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Polar</title>
+</head>
+<style>
+    #myDiv{
+        background-color: rgb(209, 176, 240);
+        width: 800px;
+        height: 800px;
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.14.0/plotly.min.js" integrity="sha512-XDnqTWsAcVl16AYJoBHumISzIYThowGjR67jeL53NSp6tajsq2qf5UeAWvk1n6Hp3M2iMsV/ewhPScBiLCDs9Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="fire.js"></script>
+
+<body>
+    <div id="myDiv">
+
+    </div>
+<script>
+    var y = fire.objects.map(e=>Number(e.properties.GIS_ACRES))
+    var x = fire.objects.map(e=>e.properties.FIRE_NAME)
+    var trace1 = {
+
+  r: y,
+  mode: 'markers',
+  type: 'barpolar',
+  marker: {color:y, colorscale:'Portland'
+
+  }
+};
+var layout={
+    title: {
+        text: 'Acres Burned in CA Wildfires during 2010, 2015, and 2020'
+    },
+    xaxis:{
+        title:{
+            text: 'Name'
+        }
+    
+    },
+    yaxis: {
+        title:{
+            text: 'Acreage'
+        }
+    }
+}
+
+
+
+var data = [trace1];
+
+
+Plotly.newPlot('myDiv', data, layout);
+
+</script>
+</body>
+</html>
