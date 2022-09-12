@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Homework</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
+</head>
+<style>
+    #map { height: 500px; 
+    background-color: blueviolet;}
+</style>
+<body>
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([38.574860, -121.499470], 16);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+}).addTo(map);
+var marker = L.marker([38.574860, -121.499470]).addTo(map);
+marker.bindPopup("<b>Cal Fire!</b><br>This is the main office building for Cal Fire which is the California Department of Forestry and Fire Protection. The building is located in downtown Sacramento. It is one of the main sources that provides a large amount of information and data about California wildfires. Cal Fire is apart of the California Natural Resources Agency.").openPopup();
+    </script>
+</body>
+</html>
