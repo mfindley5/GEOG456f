@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider Map HW Part 1</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
+    <script src="perim.js"></script>
+
+
+</head>
+    <style>
+        #map {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+<body>
+    For this assignment the data is looking at wildfires between the years 2000-2020 within the state of California. Since there are so many wildfires the data was filtered to only show fires that burned more than 25,000 acres.
+</br>
+    <h3 id="daYear">Year</h3>
+    <div id="map"></div>
+
+<script>
+    var map = L.map('map').setView([37, -119], 5.5);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+}).addTo(map);
+
+function myStyle(feature) {
+    return{
+    "weight": .5,
+    "opacity": 0.65
+}
+};
+
+
+var geojson = L.geoJSON(perim, {style: myStyle}).addTo(map);
+
+
+</script>
+</body>
+</html>
