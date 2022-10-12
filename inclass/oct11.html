@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<style>
+    img{
+        position: absolute
+    }
+    #y2004{
+        visibility: visible;
+    }
+    #y2005{
+        visibility:hidden;
+    }
+
+</style>
+
+   
+</body>
+<div id="container">
+    <img id="y2004" src="" alt="">
+    <img id="y2005" src="" alt="">
+</div>
+<script>
+    var myContainer= document.getElementById('container')
+    var hidden = 'hidden'
+    myContainer.addEventListener('click', myFunction)
+    function myFunction(){
+        alert('Hello')
+    }
+</script>
+</html>
