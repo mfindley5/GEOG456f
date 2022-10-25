@@ -22,15 +22,18 @@
    
 </body>
 <div id="container">
-    <img id="y2004" src="" alt="">
-    <img id="y2005" src="" alt="">
+    <img id="y2005" class = "off" src="./2005.png" alt="">
+    <img id="y2020" class = "on" src="./2020.png" alt="">
 </div>
 <script>
     var myContainer= document.getElementById('container')
     var hidden = 'hidden'
     myContainer.addEventListener('click', myFunction)
     function myFunction(){
-        alert('Hello')
+        var theOn = document.getElementsByClassName('on')[0]
+        var theOff = document.getElementsByClassName('off')[0]
+        theOn.className='off'
+        theOff.className='on'
     }
 </script>
 </html>
