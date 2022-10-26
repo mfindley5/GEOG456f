@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+  integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+  integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+  crossorigin=""></script>
+  <script src="perim.js"></script>
+  <script src="perim2.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wild Fires in California</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #b4bcce;
+  font-family: Helvetica, sans-serif;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: white;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+/* Container around content */
+.container {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+/* The circles on the timeline */
+.container::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: white;
+  border: 4px solid #FF9F55;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Place the container to the left */
+.left {
+  left: 0;
+}
+
+/* Place the container to the right */
+.right {
+  left: 50%;
+}
+
+/* Add arrows to the left container (pointing right) */
+.left::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid white;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+/* Fix the circle for containers on the right side */
+.right::after {
+  left: -16px;
+}
+
+/* The actual content */
+.content {
+  padding: 20px 30px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+  /* Place the timelime to the left */
+  .timeline::after {
+  left: 31px;
+  }
+  
+  /* Full-width containers */
+  .container {
+  width: 100%;
+  padding-left: 70px;
+  padding-right: 25px;
+  }
+  
+  /* Make sure that all arrows are pointing leftwards */
+  .container::before {
+  left: 60px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+  }
+
+  /* Make sure all circles are at the same spot */
+  .left::after, .right::after {
+  left: 15px;
+  }
+  
+  /* Make all right containers behave like the left ones */
+  .right {
+  left: 0%;
+  }
+}
+</style>
+</head>
+<body>
+    <h1 style="text-align:center;font-family:verdana" >California Wildfire History</h1>
+
+    <h2 style="font-family:verdana"> Intro</h2>
+    <p style="font-family:verdana">This section will be a brief introduction to the website so the viewer has a feeling of what to expect. </p>
+
+
+    <h2 style="font-family:verdana"> Wildfire Suppression Timeline</h2>
+    <p style="font-family:verdana">A general overview of major historical dates regarding fire supression in the US.</p>
+
+<div class="timeline">
+  <div class="container left">
+    <div class="content">
+      <h2>Late 1800s</h2>
+      <p>Large fires were occuring that sparked conversation within the conservation community feating that timber supplies would be decreasing. This lead to setting aside land to be set aside as national forest reseervation to protect timber supplies. </p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2>1905</h2>
+      <p>The United States Forest Service was created and was given control over the land that was set aside in the late 1890s.</p>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2>1910</h2>
+      <p>Three massive fires known as the Big Blowup occured burning over 3 million acres in two days. This lead to fire administrators meeting and they convinced themselve that total fire supression was the only to prevent another event like this from happening again. As a result the Forest Serive put this polciy in place. Three of the men who fought the Big Blowup fires had high postions in the Forest Services which allowed for the total fire supression policy to easily be enacted. </p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2>1911</h2>
+      <p>The Weeks Act of 1911 was past which was legistlation between the federal and state goverment for cooperative firefighting that offered finiacal incentive for the states for fighting fires. </p>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2>1926</h2>
+      <p>The US Forest Service enacted a polciy the required all fires over 10 acres to be suppresed and put out.</p>
+    </div>
+  </div>  
+  <div class="container right">
+    <div class="content">
+      <h2>1933</h2>
+      <p>The federal government created the Civilian Conservation Corps whcih had thousands of works building fire breaks and fighting fires.</p>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2>1935</h2>
+      <p>The 10 a.m. policy was created which said that every fire needed to be supressed by 10 a.m. the day after it was reported. This replaced the policy in 1926 that allowed fires under 10 acres to burn. </p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2>1944</h2>
+      <p>Smokey the Bear was created by the US government. ADD MORE INFO ABOUT SMOKEY </p>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2>1960s</h2>
+      <p>Significant amount of research started to come out stating the postive role that fire has in forest ecosystems. </p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2>1970s</h2>
+      <p>The research from the 60s made a radical shift in fire policy. Fires were aloud to burn when and where the government deemed appropriate. This got rid of the 10 a.m. policy. </p>
+    </div>
+  </div>
+</div>
+
+<h2 style="font-family:verdana"> Fire Suppression History</h2>
+    <p style="font-family:verdana">This section will cover the history of fire supression that was encouraged by the US government. It will cover what exactely happened and what were the impacts of this.</p>
+
+    <h2 style="font-family:verdana"> Slider Map</h2>
+    <p style="font-family:verdana">Wildfires during the years 2000-2020 within the state of California that burned more than 25,000 acres. </p>
+  </head>
+  <style>
+      #map {
+          width: 45%;
+          height: 500px;
+      }
+  </style>
+<body>
+  
+</br>
+  <h3 id="daYear">Year</h3>
+  <input type="range" name="year" min="2000" max="2020" oninput="moveSlider(this.value)">
+
+  <div id="map"></div>
+
+<script>
+  var map = L.map('map').setView([37, -119], 5.5);
+
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
+  attribution: '© OpenStreetMap'
+}).addTo(map);
+
+function myStyle(feature) {
+  //console.log(feature.properties.fireyear)
+  return{
+  "color": getColor(feature.properties.fireyear),
+  "weight": .5,
+  "opacity": 0.65
+}
+};
+function getColor(d) {
+  return d < myCurrentSelectionYear ? "orange" :
+              "purple";
+              
+}
+
+var geojson = L.geoJSON(perim, {style: myStyle}).addTo(map);
+
+
+var myCurrentSelectionYear = 2000
+function moveSlider(value) {
+  console.log(value)
+  document.getElementById('daYear').innerHTML = 'Year: ' + value
+  myCurrentSelectionYear = value
+  geojson.resetStyle()
+  
+}
+
+moveSlider(myCurrentSelectionYear)
+
+</script>
+
+
+
+
+
+    <h2 style="font-family:verdana"> The Breakdown of Fires</h2>
+    <p style="font-family:verdana">Within this section there will be multiple differnt graphical visualizations to show trends of wildfires in a non graphical way. These will most likely be made in ploty and will be used to show the data in another way. Also it can help the viewer understand more in case they are unable to digest the maps as well.  </p>
+
+    <h2 style="font-family:verdana"> Valuable Resources</h2>
+    <p style="font-family:verdana">Finally this section will link valuable sources that the user can go to be able to see up to date information about wildfires and agencies that would provide them with more information in a time of a fire.</p>
+
+
+</body>
+</html>
