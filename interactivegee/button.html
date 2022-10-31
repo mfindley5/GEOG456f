@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button</title>
+</head>
+<style>
+    img{
+        position: absolute;
+        height: 340px;
+    }
+    button{
+        position: absolute;
+        top:350px;
+    }
+</style>
+<body>
+    <img id ='img2005' src="./2005new.png" alt="">
+    <img id ='img2010' src="./2010new.png" alt="">
+    <img id ='img2020' src="./2020new.png" alt="">  
+    <button onclick="myfunction()">click me</button>
+</body>
+<script>
+    var img2005 = document.getElementById('img2005');
+    var img2010 = document.getElementById('img2010');
+    var img2020 = document.getElementById('img2020');
+    var img2005IsVisible = true;
+    function myfunction(){
+        if (img2005IsVisible) {
+            img2005.style.visibility = 'hidden';
+            img2005IsVisible = false;
+        }  
+        else {
+            img2005.style.visibility = 'visible';
+            img2005IsVisible = true;
+        } 
+}
+</script>
+</html>
