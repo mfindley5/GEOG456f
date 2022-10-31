@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll</title>
+</head>
+<style>
+    img{
+        position: absolute;
+    }
+</style>
+<body>
+    <h1>Showing Two Images with Scrollbar and Opacity</h1>
+    <h2>Showing images of downtown Sacramento where CALFire Headquarters is.</h2>
+    <input type="range" min="0" max="1" value="1" step=".01" orient="vertical" oninput="myfunction(this.value)"/>
+
+
+
+<img id='img2020'src="./2020new.png" alt="" width="600px">
+<img id='img2005'src="./2005new.png" alt="" width="600px">
+
+<script>
+    var img2005 = document.getElementById('img2005')
+    function myfunction(value){
+        img2005.style.opacity = value;
+    }
+        
+</script>
+
+</body>
+</html>
