@@ -24,11 +24,15 @@
 <body>
     <div id="map"></div>
     <script>
-        var map = L.map('map').setView([38.574860, -121.499470], 6);
+
+
+        var map = L.map('map').setView([38.574860, -121.499470], 5.5);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
 }).addTo(map);
+
+
 
 function style(feature) {
     return {
@@ -80,10 +84,10 @@ function style5(feature) {
 }
 
 var geojson = L.geoJSON(date2017, {style: style}).addTo(map);
-var geojson = L.geoJSON(date2018, {style: style2}).addTo(map);
-var geojson = L.geoJSON(date2019, {style: style3}).addTo(map);
-var geojson = L.geoJSON(date2020, {style: style4}).addTo(map);
-var geojson = L.geoJSON(date2021, {style: style5}).addTo(map);
+var geojson2 = L.geoJSON(date2018, {style: style2}).addTo(map);
+var geojson3 = L.geoJSON(date2019, {style: style3}).addTo(map);
+var geojson4 = L.geoJSON(date2020, {style: style4}).addTo(map);
+var geojson5 = L.geoJSON(date2021, {style: style5}).addTo(map);
     </script>
 </body>
 
