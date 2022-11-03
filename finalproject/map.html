@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Homework</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
+    <script src="date2017.js"></script>
+    <script src="date2018.js"></script>
+    <script src="date2019.js"></script>
+    <script src="date2020.js"></script>
+    <script src="date2021.js"></script>
+</head>
+
+<style>
+    #map { height: 600px; 
+    background-color: blueviolet;}
+</style>
+<body>
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([38.574860, -121.499470], 6);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+}).addTo(map);
+
+function style(feature) {
+    return {
+        weight: 1,
+        opacity: 1,
+        color: 'red',
+        fillColor: 'red',
+        fillOpacity: 0.5
+    };  
+}
+function style2(feature) {
+    return {
+        weight: 1,
+        opacity: 1,
+        color: 'blueviolet',
+        fillColor: 'plum',
+        fillOpacity: 0.5
+    };
+}
+
+function style3(feature) {
+    return {
+        weight: 1,
+        opacity: 1,
+        color: 'fuchsia',
+        fillColor: 'pink',
+        fillOpacity: 0.5
+    };
+}
+
+function style4(feature) {
+    return {
+        weight: 1,
+        opacity: 1,
+        color: 'yellow',
+        fillColor: 'yellow',
+        fillOpacity: 0.5
+    };
+}
+
+function style5(feature) {
+    return {
+        weight: 1,
+        opacity: 1,
+        color: 'green',
+        fillColor: 'green',
+        fillOpacity: 0.5
+    };
+}
+
+var geojson = L.geoJSON(date2017, {style: style}).addTo(map);
+var geojson = L.geoJSON(date2018, {style: style2}).addTo(map);
+var geojson = L.geoJSON(date2019, {style: style3}).addTo(map);
+var geojson = L.geoJSON(date2020, {style: style4}).addTo(map);
+var geojson = L.geoJSON(date2021, {style: style5}).addTo(map);
+    </script>
+</body>
+
+</html> 
