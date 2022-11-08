@@ -23,8 +23,8 @@ This bar plot was a great way of showing the temporal aspect than the other bar 
 
     </div>
 <script>
-    var y = fire.features.map(e=>Number(e.properties.GIS_ACRES))
-    var x = fire.features.map(e=>e.properties.YEAR_)
+    var y = fires.features.map(e=>Number(e.properties.GIS_ACRES))
+    var x = fires.features.map(e=>e.properties.YEAR_)
     var trace1 = {
   x: x,
   y: y,

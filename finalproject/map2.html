@@ -12,6 +12,8 @@
   <script src="date2019.js"></script>
   <script src="date2020.js"></script>
   <script src="date2021.js"></script>
+  <script src="allcleaned.js"></script>
+  <script src="section.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wild Fires in California</title>
 <style>
@@ -223,15 +225,15 @@ body {
   </div>
 </div>
 
-<h2 style="font-family:verdana"> Fire Suppression History</h2>
-    <p style="font-family:verdana">This section will cover the history of fire supression that was encouraged by the US government. It will cover what exactely happened and what were the impacts of this.</p>
+
 
     <h2 style="font-family:verdana"> Map of Recent Fires</h2>
     <p style="font-family:verdana">This map shows all fires within the state of California from the years 2017-2021. They are depicted in different colors. Right now I am having issues with making the map layers show up so you can click on and off different years but that is the goal.  </p>
   </head>
 
   <style>
-      #map { height: 600px; 
+      #map { width: 80%;
+      height: 600px; 
       background-color: blueviolet;}
   </style>
   <body>
@@ -306,8 +308,130 @@ body {
   
   </html> 
 
-    <h2 style="font-family:verdana"> The Breakdown of Fires</h2>
-    <p style="font-family:verdana">Within this section there will be multiple differnt graphical visualizations to show trends of wildfires in a non graphical way. These will most likely be made in ploty and will be used to show the data in another way. Also it can help the viewer understand more in case they are unable to digest the maps as well.  </p>
+    <h2 style="font-family:verdana"> The Breakdown of Fires</h2> 
+    <p style="font-family:verdana"> Below are different graphical representations to visual the fires in another form than a map. </p>
+  </head>
+  <style>
+      #myDiv{
+          background-color: rgb(209, 176, 240);
+          width: 100%;
+          height: 500px;
+          
+      }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.14.0/plotly.min.js" integrity="sha512-XDnqTWsAcVl16AYJoBHumISzIYThowGjR67jeL53NSp6tajsq2qf5UeAWvk1n6Hp3M2iMsV/ewhPScBiLCDs9Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="allcleaned.js"></script>
+  
+  <body>
+    <h5 style="font-family:verdana"> Graph 1</h5>
+    <p style="font-family:verdana">This graph shows acreage burned from wildfires from 1880 to 2021. The colors show different number of acres. </p>
+      <div id="myDiv2">
+  
+      </div>
+  <script>
+      var y = fires.features.map(e=>Number(e.properties.GIS_ACRES))
+      var x = fires.features.map(e=>e.properties.YEAR_)
+      var trace1 = {
+    x: x,
+    y: y,
+    mode: 'markers',
+    type: 'bar',
+    marker: {color:y, colorscale:'Portland'
+  
+    }
+  };
+  var layout={
+      title: {
+          text: 'Acres Burned in CA Wildfires since 1880'
+      },
+      orientation: 'h',
+      xaxis:{
+          title:{
+              text: 'Year'
+          }
+      
+      },
+      yaxis: {
+          title:{
+              text: 'Acreage'
+          }
+      }
+  }
+  
+  
+  
+  var data = [trace1];
+  
+  
+  Plotly.newPlot('myDiv2', data, layout);
+  
+  </script>
+  </body>
+  </html>
+
+  
+</head>
+<style>
+    #myDiv{
+        background-color: rgb(209, 176, 240);
+        width: 100%;
+        height: 500px;
+        
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.14.0/plotly.min.js" integrity="sha512-XDnqTWsAcVl16AYJoBHumISzIYThowGjR67jeL53NSp6tajsq2qf5UeAWvk1n6Hp3M2iMsV/ewhPScBiLCDs9Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="section.js"></script>
+
+
+
+
+<body>
+  <h5 style="font-family:verdana"> Graph 2</h5>
+  <p style="font-family:verdana">This graph zooms in on the years that were shown on the map (2017-2021). The different colors represent different amount of acres burned.  </p>
+    <div id="myDiv">
+
+    </div>
+<script>
+    var y = fire.features.map(e=>Number(e.properties.GIS_ACRES))
+    var x = fire.features.map(e=>e.properties.YEAR_)
+    var trace1 = {
+  x: x,
+  y: y,
+  mode: 'markers',
+  type: 'bar',
+  marker: {color:y, colorscale:'Portland'
+
+  }
+};
+var layout={
+    title: {
+        text: 'Acres Burned in CA Wildfires from 2017-2021'
+    },
+    orientation: 'h',
+    xaxis:{
+        title:{
+            text: 'Year'
+        }
+    
+    },
+    yaxis: {
+        title:{
+            text: 'Acreage'
+        }
+    }
+}
+
+
+
+var data = [trace1];
+
+
+Plotly.newPlot('myDiv', data, layout);
+
+</script>
+</body>
+</html>
+
 
     <h2 style="font-family:verdana"> Valuable Resources</h2>
     <p style="font-family:verdana">Finally this section will link valuable sources that the user can go to be able to see up to date information about wildfires and agencies that would provide them with more information in a time of a fire.</p>   
