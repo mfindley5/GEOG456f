@@ -24,17 +24,12 @@
 <body>
     <div id="map"></div>
     <script>
-
-
-        var map = L.map('map').setView([37.110777, -119.167843], 5.5);
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© OpenStreetMap'
-}).addTo(map);
-
-
-
-function style(feature) {
+    var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap',
+        
+    });
+    function style(feature) {
     return {
         weight: 1,
         opacity: 1,
@@ -82,12 +77,43 @@ function style5(feature) {
         fillOpacity: 0.5
     };
 }
+    var geojson = L.geoJSON(date2017, {style: style});
+    var geojson2 = L.geoJSON(date2018, {style: style2});
+    var geojson3 = L.geoJSON(date2019, {style: style3});
+    var geojson4 = L.geoJSON(date2020, {style: style4});
+    var geojson5 = L.geoJSON(date2021, {style: style5})
+     
+    var mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 
-var geojson = L.geoJSON(date2017, {style: style}).addTo(map);
-var geojson2 = L.geoJSON(date2018, {style: style2}).addTo(map);
-var geojson3 = L.geoJSON(date2019, {style: style3}).addTo(map);
-var geojson4 = L.geoJSON(date2020, {style: style4}).addTo(map);
-var geojson5 = L.geoJSON(date2021, {style: style5}).addTo(map);
+    var grayscale = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; ' + mapLink + ' Contributors', maxZoom: 18, });
+    var streets   = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; ' + mapLink + ' Contributors', maxZoom: 18, });
+
+    
+
+    var map = L.map('map', {
+    center: [37.110777, -119.167843],
+    zoom: 5.5,
+    layers: [osm,streets,grayscale]
+});
+
+var baseMaps = {
+    "OpenStreetMap": osm,
+    //"Greyscale": grayscale,
+    //"Street": streets
+};
+var overlayMaps = {
+    "2017": geojson,
+    "2018": geojson2,
+    "2019": geojson3,
+    "2020": geojson4,
+    "2021": geojson5
+}
+
+var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+
+
+
     </script>
 </body>
 

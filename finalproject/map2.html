@@ -166,7 +166,7 @@ body {
   <div class="container left">
     <div class="content">
       <h2>Late 1800s</h2>
-      <p>Large fires were occuring that sparked conversation within the conservation community feating that timber supplies would be decreasing. This lead to setting aside land to be set aside as national forest reseervation to protect timber supplies. </p>
+      <p>Large fires were occuring that sparked conversation within the conservation community fearing that timber supplies would be decreasing. This lead to setting aside land to be set aside as national forest reseervation to protect timber supplies. </p>
     </div>
   </div>
   <div class="container right">
@@ -184,13 +184,13 @@ body {
   <div class="container right">
     <div class="content">
       <h2>1911</h2>
-      <p>The Weeks Act of 1911 was past which was legistlation between the federal and state goverment for cooperative firefighting that offered finiacal incentive for the states for fighting fires. </p>
+      <p>The Weeks Act of 1911 was past which was legistlation between the federal and state goverment for cooperative firefighting that offered financial incentive for the states for fighting fires. </p>
     </div>
   </div>
   <div class="container left">
     <div class="content">
       <h2>1926</h2>
-      <p>The US Forest Service enacted a polciy the required all fires over 10 acres to be suppresed and put out.</p>
+      <p>The US Forest Service enacted a policy the required all fires over 10 acres to be suppresed and put out.</p>
     </div>
   </div>  
   <div class="container right">
@@ -220,7 +220,7 @@ body {
   <div class="container right">
     <div class="content">
       <h2>1970s</h2>
-      <p>The research from the 60s made a radical shift in fire policy. Fires were aloud to burn when and where the government deemed appropriate. This got rid of the 10 a.m. policy. </p>
+      <p>The research from the 60s made a radical shift in fire policy. Fires were allowed to burn when and where the government deemed appropriate. This got rid of the 10 a.m. policy. </p>
     </div>
   </div>
 </div>
@@ -228,9 +228,8 @@ body {
 
 
     <h2 style="font-family:verdana"> Map of Recent Fires</h2>
-    <p style="font-family:verdana">This map shows all fires within the state of California from the years 2017-2021. They are depicted in different colors. Right now I am having issues with making the map layers show up so you can click on and off different years but that is the goal.  </p>
+    <p style="font-family:verdana">This map shows all fires within the state of California from the years 2017-2021. They are depicted in different colors. Use the layer selector in the top right corner to pick which years are shown.  </p>
   </head>
-
   <style>
       #map { width: 80%;
       height: 600px; 
@@ -239,17 +238,12 @@ body {
   <body>
       <div id="map"></div>
       <script>
-  
-  
-          var map = L.map('map').setView([37.110777, -119.167843], 5.5);
-          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '© OpenStreetMap'
-  }).addTo(map);
-  
-  
-  
-  function style(feature) {
+      var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '© OpenStreetMap',
+          
+      });
+      function style(feature) {
       return {
           weight: 1,
           opacity: 1,
@@ -297,12 +291,43 @@ body {
           fillOpacity: 0.5
       };
   }
+      var geojson = L.geoJSON(date2017, {style: style});
+      var geojson2 = L.geoJSON(date2018, {style: style2});
+      var geojson3 = L.geoJSON(date2019, {style: style3});
+      var geojson4 = L.geoJSON(date2020, {style: style4});
+      var geojson5 = L.geoJSON(date2021, {style: style5})
+       
+      var mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
   
-  var geojson = L.geoJSON(date2017, {style: style}).addTo(map);
-  var geojson2 = L.geoJSON(date2018, {style: style2}).addTo(map);
-  var geojson3 = L.geoJSON(date2019, {style: style3}).addTo(map);
-  var geojson4 = L.geoJSON(date2020, {style: style4}).addTo(map);
-  var geojson5 = L.geoJSON(date2021, {style: style5}).addTo(map);
+      var grayscale = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; ' + mapLink + ' Contributors', maxZoom: 18, });
+      var streets   = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; ' + mapLink + ' Contributors', maxZoom: 18, });
+  
+      
+  
+      var map = L.map('map', {
+      center: [37.110777, -119.167843],
+      zoom: 5.5,
+      layers: [osm,streets,grayscale]
+  });
+  
+  var baseMaps = {
+      "OpenStreetMap": osm,
+      //"Greyscale": grayscale,
+      //"Street": streets
+  };
+  var overlayMaps = {
+      "2017": geojson,
+      "2018": geojson2,
+      "2019": geojson3,
+      "2020": geojson4,
+      "2021": geojson5
+  }
+  
+  var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
+  
+  
+  
+  
       </script>
   </body>
   
