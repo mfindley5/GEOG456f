@@ -208,7 +208,7 @@ body {
   <div class="container right">
     <div class="content">
       <h2>1944</h2>
-      <p>Smokey the Bear was created by the US government. ADD MORE INFO ABOUT SMOKEY </p>
+      <p>Smokey the Bear was created by the US government to help educate the public about fire prevention. This centered around the idea that any fire would hurt timber products. </p>
     </div>
   </div>
   <div class="container left">
@@ -316,15 +316,19 @@ body {
       //"Street": streets
   };
   var overlayMaps = {
-      "2017": geojson,
-      "2018": geojson2,
-      "2019": geojson3,
-      "2020": geojson4,
-      "2021": geojson5
+      "2017 (Red)": geojson,
+      "2018 (Purple)": geojson2,
+      "2019 (Pink)": geojson3,
+      "2020 (Yellow)": geojson4,
+      "2021 (Green)": geojson5
   }
   
   var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
-  
+  geojson.addTo(map)
+  geojson2.addTo(map)
+  geojson3.addTo(map)
+  geojson4.addTo(map)
+  geojson5.addTo(map)
   
   
   
@@ -361,7 +365,7 @@ body {
     y: y,
     mode: 'markers',
     type: 'bar',
-    marker: {color:y, colorscale:'Portland'
+    marker: {color:y, colorscale: 'YlGnBu'
   
     }
   };
@@ -424,7 +428,7 @@ body {
   y: y,
   mode: 'markers',
   type: 'bar',
-  marker: {color:y, colorscale:'Portland'
+  marker: {color:y, colorscale: 'YlGnBu'
 
   }
 };
@@ -459,13 +463,37 @@ Plotly.newPlot('myDiv', data, layout);
 
 
     <h2 style="font-family:verdana"> Valuable Resources</h2>
-    <p style="font-family:verdana">Finally this section will link valuable sources that the user can go to be able to see up to date information about wildfires and agencies that would provide them with more information in a time of a fire.</p>   
+    <p style="font-family:verdana"> </p>   
     <p></p>
     <a href="https://www.fire.ca.gov/"> CALFIRE</a>
     <p></p>
     <a href="https://www.latimes.com/wildfires-map/">LA Times Active Wildfire Map</a>
     <p></p>
     <a href="https://wildfirerecovery.caloes.ca.gov/">CA Government Recovery Resources for Fires</a>
+
+</body>
+</html>
+
+</body>
+</html>
+
+
+    <h2 style="font-family:verdana"> References</h2>
+    <p style="font-family:verdana"> </p> 
+Joyce, C. (2018). How The Smokey Bear Effect Led To Raging Wildfires. NPR. <a href="https://www.npr.org/2012/08/23/159373691/how-the-smokey-bear-effect-led-to-raging-wildfires"> https://www.npr.org/2012/08/23/159373691/how-the-smokey-bear-effect-led-to-raging-wildfires</a> 
+<p></p>
+Wagtendonk, J. (2007). The History and Evolution of Wildland Fire Use. Fire Ecology, 3(2), 3–17. <a href="https://doi.org/10,4996/fireecology.0302003">https://doi.org/10,4996/fireecology.0302003</a> 
+<p></p>
+(n.d.). Benefits of Fire. CALFire.  <a href="https://www.fire.ca.gov/media/5425/benifitsoffire.pdf">https://www.fire.ca.gov/media/5425/benifitsoffire.pdf</a> 
+<p></p>
+(n.d.). U.S. FOREST SERVICE FIRE SUPPRESSION. Forest History Society. <a href="https://foresthistory.org/research-explore/us-forest-service-history/policy-and-law/fire-u-s-forest-service/u-s-forest-service-fire-suppression/#:~:text=In%201933%2C%20the%20federal%20government,day%20following%20its%20initial%20report">https://foresthistory.org/research-explore/us-forest-service-history/policy-and-law/fire-u-s-forest-service/u-s-forest-service-fire-suppression/#:~:text=In%201933%2C%20the%20federal%20government,day%20following%20its%20initial%20report</a>  
+<p></p>
+(n.d.). Fighting Wildfires. PBS. <a href="https://www.pbs.org/wgbh/americanexperience/features/burn-fighting-wildfires/">https://www.pbs.org/wgbh/americanexperience/features/burn-fighting-wildfires/</a> 
+<p></p>
+(2019). California Fire Perimeters (all). California State Geoportal. <a href="https://gis.data.ca.gov/datasets/CALFIRE-Forestry::california-fire-perimeters-all-1/explore?location=38.906952%2C-119.598354%2C7.00&showTable=true">https://gis.data.ca.gov/datasets/CALFIRE-Forestry::california-fire-perimeters-all-1/explore?location=38.906952%2C-119.598354%2C7.00&showTable=true</a> 
+
+  
+
 
 </body>
 </html>
